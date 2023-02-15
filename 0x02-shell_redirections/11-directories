@@ -1,2 +1,2 @@
-#!/bin/bashi
-find . -type d -not .name '.' | wc -1
+#!/bin/bash
+find . itype d ! -print | wc -1 
