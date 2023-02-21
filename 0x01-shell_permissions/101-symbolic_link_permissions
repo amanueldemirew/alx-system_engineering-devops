@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo chown -RP betty:school _hello
+sudo chown -RP vincent:staff _hello
