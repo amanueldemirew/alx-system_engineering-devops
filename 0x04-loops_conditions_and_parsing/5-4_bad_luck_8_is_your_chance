@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# This script is displaying bad luck good luck and holberton school
-x=1
-while [ $x -le 10 ]
+#this is for loop that has 4 bad luck 8 good luck and the rest best school
+
+i=0
+
+while ((i<10))
 do
-	if [ $x -eq 4 ]
+	if ((i==3))
 	then
 		echo "bad luck"
-	elif [ $x -eq 8 ]
+	elif((i==7))
 	then
 		echo "good luck"
 	else
-		echo "Holberton School"
+		echo "Best School"
 	fi
-  x=$((x + 1))
+	((i++))
 done
