@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Bash script that uses ssh
 
-ssh -i ~/.ssh/school ubuntu@54.89.28.52
+ssh -i ~/.ssh/school ubuntu@34.237.91.237
+
