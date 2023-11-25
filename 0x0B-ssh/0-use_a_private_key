@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that uses ssh
+
+ssh -i ~/.ssh/schoo ubuntul@54.237.8.222
