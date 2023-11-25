@@ -1,5 +1,4 @@
-# manifest.pp
-
+#!/usr/bin/pup
 # Install the puppetlabs-stdlib module
 class { 'stdlib': }
 
