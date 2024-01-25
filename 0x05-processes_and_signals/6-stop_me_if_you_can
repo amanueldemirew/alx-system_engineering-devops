@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# terminate the 4-to_infinity_and_beyond without using  kill or killall
-pkill -f ./4-to_infinity_and_beyond
+#this kills 4 project without using kill
+
+pkill -f 4-to_infinity_and_beyond

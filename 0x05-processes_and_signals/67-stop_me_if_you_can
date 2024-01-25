@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#this kills 4 project without using kill
+
+pkill -f 7-highlander

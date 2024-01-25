@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-# print bash pid.
+#this shows only pid of bash
+
 # shellcheck disable=SC2009
-ps auxf | grep bash
+
+ps -aufx | grep "bash"

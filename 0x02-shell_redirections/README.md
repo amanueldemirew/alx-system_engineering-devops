@@ -1,1 +1,1 @@
-0x02 shell redirect
+Input / Output redirection

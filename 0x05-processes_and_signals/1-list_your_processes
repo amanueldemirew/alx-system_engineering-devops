@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# print all running pid
-ps auxf
+#this makes it possible to list all process files
+
+ps -auxf

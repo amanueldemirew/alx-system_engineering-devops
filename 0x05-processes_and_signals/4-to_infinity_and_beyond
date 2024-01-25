@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# print To infinity and beyond indefinitely with delay 2
-while :
+#this makes "To infinity and beyong" indefinitely
+
+while ((1>0))
 do
 	echo "To infinity and beyond"
 	sleep 2
