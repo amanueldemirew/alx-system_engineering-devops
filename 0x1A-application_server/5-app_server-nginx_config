@@ -1,47 +1,45 @@
+# Configures Nginx to serve the complete AirBnB_clone_v4 application.
+
 server {
-       listen 80;
-       server_name 54.157.167.29;
+    # Listen on port 80.
+    listen      80 default_server;
+    listen      [::]:80 default_server ipv6only=on;
 
-       location /airbnb-dynamic/number_odd_or_even/ {
-              proxy_pass http://127.0.0.1:5001;
-	      proxy_set_header Host $host;
-	      proxy_set_header X-Real-IP $remote_addr;
-	      rewrite ^/airbnb-dynamic/number_odd_or_even/(\d+)$ /number_odd_or_even/$1 break;
-	  }
+    # Use server IP as domain name
+    server_name 104.196.168.90;
 
-	      location / {
-	      	       proxy_pass http://localhost:5003/2-hbnb;
-	      	       proxy_set_header Host $host;
-		       proxy_set_header X-Real-IP $remote_addr;
-	}
+    # Customize HTTP response header
+    add_header  X-Served-By 375-web-01;
 
-	location /2-hbnb {
-		proxy_pass http://localhost:5003/2-hbnb;
-		proxy_set_header Host $host;
-		proxy_set_header X-Real-IP $remote_addr;
-      }
+    # Serve /airbnb-onepage/ route on AirBnB_clone_v2
+    location = /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
 
-      location /static/ {
-      	       	alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static/;
-}
+    # Serve /number_odd_or_even/ route on AirBnB_clone_v2
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+    }
 
-	location /number_odd_or_even/ {
-		proxy_pass http://127.0.0.1:5001;
-		proxy_set_header Host $host;
-		proxy_set_header X-Real-IP $remote_addr;
-}
+    # Serve AirBnB_clone_v3 API
+    location /api {
+        proxy_pass http://127.0.0.1:5002/api;
+    }
 
-location /api/ {
-proxy_pass http://127.0.0.1:5002;
-proxy_set_header Host $host;
-proxy_set_header X-Real-IP $remote_addr;
-}
+    # Configure /2-hbnb route of AirBnB_clone_v4 as root location
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
 
-root /var/www/html;
+    # Serve static content for AirBnB_clone_v4
+    location /static {
+        proxy_pass http://127.0.0.1:5003;
+    }
 
-# Add index.php to the list if you are using PHP
-index index.html index.htm index.nginx-debian.html;
-
-server_name _;
-
+    # 404 error page
+    error_page 404 /404.html;
+    location /404 {
+        root /var/www/html;
+        internal;
+    }
 }
